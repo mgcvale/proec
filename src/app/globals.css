@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-fg);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme html.dark {
+  /* tailwind colors - dark theme */
+  --color-flag: red;
+  --color-bg: #0d0d0d;
+  --color-on-bg: #ffffff;
+
+  --color-fg: #ffffff;
+  --color-fg-muted: #a1a1a1;
+  --color-on-fg: #0d0d0d;
+  --color-on-fg-muted: #030303;
+
+  --color-surface: #0d0d0d;
+  --color-surface-border: #2b2b2b;
+  --color-on-surface: #ffffff;
+
+  /* accent 1 – purple - 500 is the base for fonts/elements (same as in framer) */
+  --color-accent-1-100: #ece7ff;
+  --color-accent-1-300: #b299ff;
+  --color-accent-1-500: #7954ff;
+  --color-accent-1-700: #4f29e5;
+  --color-accent-1-900: #2d1399;
+
+  /* accent 2 – magenta */
+  --color-accent-2-100: #fde8ff;
+  --color-accent-2-300: #ec9cff;
+  --color-accent-2-500: #c300ff;
+  --color-accent-2-700: #9100c2;
+  --color-accent-2-900: #570076;
 }
 
+@theme html {
+    /* tailwind colors - light theme */
+  --color-flag: green;
+  --color-bg: #ffffff;
+  --color-on-bg: #0d0d0d;
+
+  --color-fg: #0d0d0d;
+  --color-fg-muted: #4b4b4b;
+  --color-on-fg: #ffffff;
+  --color-on-fg-muted: #f5f5f5;
+
+  --color-surface: #f7f7f7;
+  --color-surface-border: #d1d1d1;
+  --color-on-surface: #0d0d0d;
+
+  /* accent 1 – purple */
+  --color-accent-1-100: #f5f0ff;
+  --color-accent-1-300: #c9b8ff;
+  --color-accent-1-500: #7954ff;
+  --color-accent-1-700: #5c3ec4;
+  --color-accent-1-900: #3c267a;
+
+  /* accent 2 – magenta */
+  --color-accent-2-100: #fff0fb;
+  --color-accent-2-300: #f5b3ff;
+  --color-accent-2-500: #c300ff;
+  --color-accent-2-700: #9a00c8;
+  --color-accent-2-900: #630080;
+}
+
+html.dark {
+  /* tailwind colors - dark theme */
+  --color-flag: red;
+  --color-bg: #0d0d0d;
+  --color-on-bg: #ffffff;
+
+  --color-fg: #ffffff;
+  --color-fg-muted: #a1a1a1;
+  --color-on-fg: #0d0d0d;
+  --color-on-fg-muted: #030303;
+
+  --color-surface: #0d0d0d;
+  --color-surface-border: #2b2b2b;
+  --color-on-surface: #ffffff;
+
+  /* accent 1 – purple - 500 is the base for fonts/elements (same as in framer) */
+  --color-accent-1-100: #ece7ff;
+  --color-accent-1-300: #b299ff;
+  --color-accent-1-500: #7954ff;
+  --color-accent-1-700: #4f29e5;
+  --color-accent-1-900: #2d1399;
+
+  /* accent 2 – magenta */
+  --color-accent-2-100: #fde8ff;
+  --color-accent-2-300: #ec9cff;
+  --color-accent-2-500: #c300ff;
+  --color-accent-2-700: #9100c2;
+  --color-accent-2-900: #570076;
+}
+
+html {
+    /* tailwind colors - light theme */
+  --color-flag: green;
+  --color-bg: #ffffff;
+  --color-on-bg: #0d0d0d;
+
+  --color-fg: #0d0d0d;
+  --color-fg-muted: #4b4b4b;
+  --color-on-fg: #ffffff;
+  --color-on-fg-muted: #f5f5f5;
+
+  --color-surface: #f7f7f7;
+  --color-surface-border: #d1d1d1;
+  --color-on-surface: #0d0d0d;
+
+  /* accent 1 – purple */
+  --color-accent-1-100: #f5f0ff;
+  --color-accent-1-300: #c9b8ff;
+  --color-accent-1-500: #7954ff;
+  --color-accent-1-700: #5c3ec4;
+  --color-accent-1-900: #3c267a;
+
+  /* accent 2 – magenta */
+  --color-accent-2-100: #fff0fb;
+  --color-accent-2-300: #f5b3ff;
+  --color-accent-2-500: #c300ff;
+  --color-accent-2-700: #9a00c8;
+  --color-accent-2-900: #630080;
+
+}
+
+
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-bg);
+  color: var(--color-fg);
   font-family: Arial, Helvetica, sans-serif;
 }
