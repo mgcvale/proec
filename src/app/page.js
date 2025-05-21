@@ -1,8 +1,8 @@
 "use client";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
-    <ThemeSwitcher></ThemeSwitcher>
+    <Header></Header>
   );
 }

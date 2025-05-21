@@ -35,6 +35,10 @@
   --color-accent-2-500: #c300ff;
   --color-accent-2-700: #9100c2;
   --color-accent-2-900: #570076;
+
+  /* fonts */
+  --font-sans: var(--font-onest) sans;
+  --font-onest: var(--font-onest);
 }
 
 @theme html {
@@ -65,6 +69,10 @@
   --color-accent-2-500: #c300ff;
   --color-accent-2-700: #9a00c8;
   --color-accent-2-900: #630080;
+
+  /* fonts */
+  --font-sans: var(--font-onest) sans;
+  --font-onest: var(--font-onest);
 }
 
 html.dark {
@@ -128,10 +136,8 @@ html {
 
 }
 
-
-
 body {
   background: var(--color-bg);
   color: var(--color-fg);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-onest) Arial, Helvetica, sans-serif;
 }
