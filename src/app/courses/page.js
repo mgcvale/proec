@@ -2,78 +2,177 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
+import Link from "next/link";
 
-// Sample course data
-const coursesData = [
+// Robotics course modules data structured by grade
+const roboticsCourseData = [
   {
-    id: "web-development",
-    title: "Desenvolvimento Web Moderno",
-    category: "Tecnologia",
-    level: "Intermediário",
-    duration: "12 semanas",
-    description: "Aprenda as mais recentes tecnologias e frameworks para desenvolvimento web, incluindo React, Next.js e Node.js.",
-    image: "/courses/web-dev.jpg"
+    id: "1st-grade",
+    grade: "1º Ano",
+    title: "Introdução à Robótica para 1º Ano",
+    modules: [
+      {
+        title: "Conhecendo os Robôs",
+        skills: ["Identificação de robôs no dia a dia", "Introdução a formas e cores básicas", "Desenvolvimento de coordenação motora fina"],
+        activities: ["Montagem de robôs simples com blocos", "Desenho e colorir robôs", "Jogos interativos de reconhecimento"],
+        icon: "🤖"
+      },
+      {
+        title: "Movimentos Básicos",
+        skills: ["Direções cardinais (frente, trás, esquerda, direita)", "Sequências simples", "Contagem básica"],
+        activities: ["Tapete de programação com comandos por cores", "Exercícios lúdicos de movimento", "Brincadeiras de seguir instruções"],
+        icon: "➡️"
+      },
+      {
+        title: "Histórias e Robôs",
+        skills: ["Criatividade e imaginação", "Narrativa simples", "Trabalho em equipe"],
+        activities: ["Teatro de robôs", "Criação de histórias sobre robôs ajudantes", "Desenho de robôs para diferentes tarefas"],
+        icon: "📚"
+      }
+    ],
+    description: "Um primeiro contato divertido e lúdico com o mundo da robótica, desenvolvendo habilidades básicas de raciocínio lógico e criatividade.",
+    color: "indigo"
   },
   {
-    id: "data-science",
-    title: "Ciência de Dados e Análise",
-    category: "Tecnologia",
-    level: "Avançado",
-    duration: "16 semanas",
-    description: "Explore técnicas avançadas de análise de dados, aprendizado de máquina e visualização de dados.",
-    image: "/courses/data-science.jpg"
+    id: "2nd-grade",
+    grade: "2º Ano",
+    title: "Robótica Criativa para 2º Ano",
+    modules: [
+      {
+        title: "Componentes e Estruturas",
+        skills: ["Identificação de componentes básicos", "Noções de equilíbrio e estabilidade", "Resolução de problemas simples"],
+        activities: ["Montagem de estruturas com blocos de encaixe", "Testes de equilíbrio", "Criação de robôs com materiais recicláveis"],
+        icon: "🔧"
+      },
+      {
+        title: "Introdução à Programação",
+        skills: ["Sequências de comandos", "Causa e efeito", "Pensamento computacional básico"],
+        activities: ["Jogos de programação sem computador", "Desafios de sequenciamento", "Criação de rotinas simples"],
+        icon: "💻"
+      },
+      {
+        title: "Robôs e Meio Ambiente",
+        skills: ["Consciência ambiental", "Classificação de materiais", "Trabalho colaborativo"],
+        activities: ["Projeto de robô coletor de lixo", "Separação de resíduos com robôs", "Histórias sobre robôs que ajudam a natureza"],
+        icon: "🌱"
+      }
+    ],
+    description: "Ampliação do conhecimento sobre robótica com introdução a conceitos básicos de programação e consciência ambiental.",
+    color: "blue"
   },
   {
-    id: "mobile-apps",
-    title: "Desenvolvimento de Aplicativos Móveis",
-    category: "Tecnologia",
-    level: "Intermediário",
-    duration: "10 semanas",
-    description: "Crie aplicativos móveis nativos e multiplataforma para iOS e Android utilizando React Native.",
-    image: "/courses/mobile-apps.jpg"
+    id: "3rd-grade",
+    grade: "3º Ano",
+    title: "Desafios Robóticos para 3º Ano",
+    modules: [
+      {
+        title: "Sensores e Interação",
+        skills: ["Compreensão de sensores básicos", "Ação e reação", "Observação e coleta de dados simples"],
+        activities: ["Experimentos com sensores de toque", "Construção de robôs que reagem a estímulos", "Jogos de estímulo-resposta"],
+        icon: "👁️"
+      },
+      {
+        title: "Programação em Blocos",
+        skills: ["Lógica de programação visual", "Loops simples", "Depuração básica"],
+        activities: ["Introdução a plataformas de programação em blocos", "Criação de animações simples", "Programação de movimentos sequenciais"],
+        icon: "🧩"
+      },
+      {
+        title: "Desafios de Engenharia",
+        skills: ["Resolução de problemas", "Planejamento básico", "Teste e melhoria"],
+        activities: ["Construção de pontes e estruturas", "Desafios de transporte de objetos", "Competições amigáveis de robótica"],
+        icon: "🏗️"
+      }
+    ],
+    description: "Introdução a conceitos mais avançados de robótica com ênfase em sensores, programação em blocos e resolução de problemas de engenharia.",
+    color: "cyan"
   },
   {
-    id: "digital-marketing",
-    title: "Marketing Digital",
-    category: "Marketing",
-    level: "Iniciante",
-    duration: "8 semanas",
-    description: "Aprenda estratégias eficazes de marketing digital, SEO, mídias sociais e análise de desempenho.",
-    image: "/courses/digital-marketing.jpg"
+    id: "4th-grade",
+    grade: "4º Ano",
+    title: "Robótica Aplicada para 4º Ano",
+    modules: [
+      {
+        title: "Robótica e Matemática",
+        skills: ["Medições e unidades", "Geometria aplicada", "Cálculos simples"],
+        activities: ["Construção de figuras geométricas com robôs", "Desafios de medição e distância", "Problemas matemáticos com robótica"],
+        icon: "📏"
+      },
+      {
+        title: "Programação Intermediária",
+        skills: ["Condicionais simples (se-então)", "Variáveis básicas", "Sequências mais complexas"],
+        activities: ["Programação de comportamentos baseados em condições", "Criação de jogos simples", "Robôs que tomam decisões"],
+        icon: "🔄"
+      },
+      {
+        title: "Automação e Cotidiano",
+        skills: ["Identificação de automações no dia a dia", "Pensamento criativo", "Design de soluções"],
+        activities: ["Projeto de casa inteligente", "Criação de dispositivos automatizados simples", "Discussão sobre tecnologia no cotidiano"],
+        icon: "🏠"
+      }
+    ],
+    description: "Aprofundamento em robótica educacional com aplicações práticas em matemática e introdução à automação, estimulando o pensamento crítico.",
+    color: "teal"
   },
   {
-    id: "ux-design",
-    title: "Design de Experiência do Usuário (UX)",
-    category: "Design",
-    level: "Intermediário",
-    duration: "9 semanas",
-    description: "Domine os princípios de UX/UI design e aprenda a criar interfaces intuitivas e centradas no usuário.",
-    image: "/courses/ux-design.jpg"
-  },
-  {
-    id: "project-management",
-    title: "Gestão de Projetos Ágeis",
-    category: "Gestão",
-    level: "Intermediário",
-    duration: "6 semanas",
-    description: "Aprenda metodologias ágeis como Scrum e Kanban para gerenciar projetos de forma eficiente.",
-    image: "/courses/project-management.jpg"
+    id: "5th-grade",
+    grade: "5º Ano",
+    title: "Robótica Avançada para 5º Ano",
+    modules: [
+      {
+        title: "Robótica e Ciências",
+        skills: ["Método científico básico", "Coleta e análise de dados", "Formulação de hipóteses"],
+        activities: ["Experimentos científicos com robôs", "Medição de variáveis ambientais", "Projetos de pesquisa simples"],
+        icon: "🔬"
+      },
+      {
+        title: "Programação Avançada",
+        skills: ["Funções simples", "Múltiplos sensores", "Algoritmos mais complexos"],
+        activities: ["Criação de projetos com múltiplos sensores", "Programação de comportamentos complexos", "Resolução de labirintos"],
+        icon: "📊"
+      },
+      {
+        title: "Projeto Final Integrado",
+        skills: ["Planejamento de projetos", "Documentação básica", "Apresentação e comunicação"],
+        activities: ["Desenvolvimento de projeto robótico completo", "Documentação do processo de criação", "Feira de robótica para apresentação"],
+        icon: "🏆"
+      }
+    ],
+    description: "Culminação do aprendizado em robótica do ensino fundamental I com projetos mais complexos e integração com outras disciplinas.",
+    color: "green"
   }
 ];
 
 export default function Courses() {
+  const [selectedGrade, setSelectedGrade] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("Todos");
   
-  const categories = ["Todos", ...new Set(coursesData.map(course => course.category))];
-  
-  const filteredCourses = coursesData.filter(course => {
-    const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          course.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === "Todos" || course.category === selectedCategory;
+  // Filter courses based on search and selected grade
+  const filteredCourses = roboticsCourseData.filter(course => {
+    const matchesSearch = 
+      course.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      course.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.modules.some(module => 
+        module.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        module.skills.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
     
-    return matchesSearch && matchesCategory;
+    const matchesGrade = selectedGrade === "all" || course.id === selectedGrade;
+    
+    return matchesSearch && matchesGrade;
   });
+
+  // Color utility function
+  const getColorClass = (color) => {
+    const colorMap = {
+      indigo: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:bg-opacity-30 dark:text-indigo-300",
+      blue: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:bg-opacity-30 dark:text-blue-300",
+      cyan: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:bg-opacity-30 dark:text-cyan-300",
+      teal: "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:bg-opacity-30 dark:text-teal-300",
+      green: "bg-green-100 text-green-800 dark:bg-green-900 dark:bg-opacity-30 dark:text-green-300"
+    };
+    return colorMap[color] || "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
+  };
 
   return (
     <main className="min-h-screen flex flex-col">
@@ -81,9 +180,9 @@ export default function Courses() {
       
       <section className="flex-1 container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold mb-2 text-fg">Explorar Cursos</h1>
+          <h1 className="text-4xl font-bold mb-2 text-fg">Curso de Robótica Educacional</h1>
           <p className="text-lg mb-8 text-fg-muted">
-            Explore as diferentes etapas do curso de robótica educacional
+            Conheça o conteúdo programático do nosso curso de robótica para o Ensino Fundamental I
           </p>
           
           <div className="mb-8 flex flex-col md:flex-row gap-4">
@@ -91,8 +190,8 @@ export default function Courses() {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Faça uma busca..."
-                  className="w-full p-3 pl-10 bg-surface border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-1-500"
+                  placeholder="Pesquisar conteúdos e habilidades..."
+                  className="w-full p-3 pl-10 bg-surface border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -104,44 +203,65 @@ export default function Courses() {
             
             <div className="md:w-64">
               <select
-                className="w-full p-3 bg-surface border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-1-500 appearance-none"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full p-3 bg-surface border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary appearance-none"
+                value={selectedGrade}
+                onChange={(e) => setSelectedGrade(e.target.value)}
               >
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
+                <option value="all">Todos os Anos</option>
+                {roboticsCourseData.map(course => (
+                  <option key={course.id} value={course.id}>{course.grade}</option>
                 ))}
               </select>
             </div>
           </div>
           
           {filteredCourses.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="space-y-12">
               {filteredCourses.map(course => (
-                <div key={course.id} className="bg-surface border border-surface-border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
-                  <div className="h-48 bg-accent-1-100 dark:bg-accent-1-900 dark:bg-opacity-20 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12 text-accent-1-500">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                    </svg>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-2">
-                      <span className="px-3 py-1 bg-accent-1-100 dark:bg-accent-1-900 dark:bg-opacity-20 text-accent-1-700 dark:text-accent-1-300 text-xs rounded-full">
-                        {course.category}
-                      </span>
-                      <span className="text-sm text-fg-muted">{course.duration}</span>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2">{course.title}</h3>
-                    <p className="text-fg-muted mb-4 text-sm line-clamp-2">{course.description}</p>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-fg-muted">{course.level}</span>
-                      <a 
+                <div key={course.id} className="bg-surface border border-surface-border rounded-lg overflow-hidden">
+                  <div className="p-6 border-b border-surface-border">
+                    <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
+                      <div>
+                        <span className={`px-3 py-1 text-sm rounded-full ${getColorClass(course.color)}`}>
+                          {course.grade}
+                        </span>
+                        <h2 className="text-2xl font-semibold mt-3">{course.title}</h2>
+                      </div>
+                      <Link 
                         href={`/courses/${course.id}`}
-                        className="px-4 py-2 bg-accent-1-500 text-white rounded-lg hover:bg-accent-1-700 transition-colors text-sm"
+                        className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors text-sm"
                       >
-                        Ver Curso
-                      </a>
+                        Ver Detalhes
+                      </Link>
                     </div>
+                    <p className="text-fg-muted">{course.description}</p>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-3 gap-px bg-surface-border">
+                    {course.modules.map((module, index) => (
+                      <div key={index} className="bg-surface p-6">
+                        <div className="text-4xl mb-3">{module.icon}</div>
+                        <h3 className="text-lg font-medium mb-3">{module.title}</h3>
+                        
+                        <div className="mb-4">
+                          <h4 className="text-sm font-medium text-fg-muted mb-2">Habilidades desenvolvidas:</h4>
+                          <ul className="text-sm space-y-1 list-disc list-inside">
+                            {module.skills.map((skill, i) => (
+                              <li key={i}>{skill}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        
+                        <div>
+                          <h4 className="text-sm font-medium text-fg-muted mb-2">Atividades principais:</h4>
+                          <ul className="text-sm space-y-1 list-disc list-inside">
+                            {module.activities.map((activity, i) => (
+                              <li key={i}>{activity}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               ))}
@@ -151,7 +271,7 @@ export default function Courses() {
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16 text-fg-muted mb-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
               </svg>
-              <h3 className="text-xl font-medium mb-2">Nenhum curso encontrado</h3>
+              <h3 className="text-xl font-medium mb-2">Nenhum conteúdo encontrado</h3>
               <p className="text-fg-muted">Tente ajustar seus critérios de busca</p>
             </div>
           )}
