@@ -83,7 +83,7 @@ export default function Courses() {
         <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl font-bold mb-2 text-fg">Explorar Cursos</h1>
           <p className="text-lg mb-8 text-fg-muted">
-            Descubra nossa seleção de cursos projetados para impulsionar sua carreira
+            Explore as diferentes etapas do curso de robótica educacional
           </p>
           
           <div className="mb-8 flex flex-col md:flex-row gap-4">
@@ -91,7 +91,7 @@ export default function Courses() {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Buscar cursos..."
+                  placeholder="Faça uma busca..."
                   className="w-full p-3 pl-10 bg-surface border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-1-500"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}

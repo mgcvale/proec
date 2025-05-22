@@ -27,7 +27,7 @@ export default function DesktopHeader() {
 
                 <Link href="/courses">
                     <Button outlined={false} filled={false}>
-                        Explorar cursos
+                        Explorar curso
                     </Button>
                 </Link>
 

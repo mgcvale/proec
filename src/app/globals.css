@@ -18,7 +18,7 @@
   --color-on-fg: #0d0d0d;
   --color-on-fg-muted: #030303;
 
-  --color-surface: #0d0d0d;
+  --color-surface: #181818;
   --color-surface-border: #2b2b2b;
   --color-on-surface: #ffffff;
 
@@ -39,6 +39,9 @@
   /* fonts */
   --font-sans: var(--font-onest) sans;
   --font-onest: var(--font-onest);
+
+  /* sizes */
+  --text-0\.5-xl: 1.25rem;
 }
 
 @theme html {

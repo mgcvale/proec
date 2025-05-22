@@ -24,7 +24,6 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Basic validation
     if (!formState.name || !formState.email || !formState.message) {
       setFormStatus({
         type: "error",
@@ -33,7 +32,6 @@ export default function Contact() {
       return;
     }
     
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formState.email)) {
       setFormStatus({
@@ -43,14 +41,12 @@ export default function Contact() {
       return;
     }
     
-    // Simulate form submission
     setTimeout(() => {
       setFormStatus({
         type: "success",
         message: "Mensagem enviada com sucesso! Entraremos em contato em breve."
       });
       
-      // Reset form
       setFormState({
         name: "",
         email: "",
@@ -58,7 +54,6 @@ export default function Contact() {
         message: ""
       });
       
-      // Clear success message after 5 seconds
       setTimeout(() => setFormStatus(null), 5000);
     }, 1000);
   };
@@ -86,7 +81,7 @@ export default function Contact() {
                   </svg>
                   <div>
                     <h3 className="font-medium">Endereço</h3>
-                    <p className="text-fg-muted">Av. Universitária, 1000<br />Campinas, SP - 13083-970</p>
+                    <p className="text-fg-muted">Rua Paschoal Marmo, 1888<br />Limeira, SP - 13484-332</p>
                   </div>
                 </div>
                 
@@ -96,29 +91,10 @@ export default function Contact() {
                   </svg>
                   <div>
                     <h3 className="font-medium">E-mail</h3>
-                    <p className="text-fg-muted">contato@proec.edu.br</p>
+                    <p className="text-fg-muted">cl203001@g.unicamp.br</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mt-1 mr-3 text-accent-1-500">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-                  </svg>
-                  <div>
-                    <h3 className="font-medium">Telefone</h3>
-                    <p className="text-fg-muted">(19) 3521-0000</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mt-1 mr-3 text-accent-1-500">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                  </svg>
-                  <div>
-                    <h3 className="font-medium">Horário de Atendimento</h3>
-                    <p className="text-fg-muted">Segunda a Sexta: 8h às 18h</p>
-                  </div>
-                </div>
               </div>
             </div>
             
