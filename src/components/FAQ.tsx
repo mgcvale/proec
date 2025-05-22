@@ -1,6 +1,10 @@
+"use client";
 import { type FAQItem } from '@/types';
 import { Plus } from 'lucide-react';
 import { useState } from 'react';
+import Button from './Button';
+import { useRouter } from 'next/navigation';
+import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
 /**
  * FAQ item component with toggle functionality
@@ -51,6 +55,8 @@ const FAQItem = ({ question, answer, defaultOpen = false }: {question: string, a
 };
 
 export default function FAQ() {
+  const router: AppRouterInstance = useRouter();
+
   const faqs: FAQItem[] = [
     {
       question: "O que eu aprenderei neste curso?",
@@ -84,23 +90,29 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="w-full max-w-4xl mx-auto mt-16 mb-16">
-      <div className="text-fg-muted uppercase text-sm tracking-[0.13em] mb-2">
-        FAQ
-      </div>
+    <div className="flex flex-col jutsify-start items-start gap-3 mb-16 mt-16 w-full max-w-4xl mx-auto">
+      <section className="w-full mb-2">
+        <div className="text-fg-muted uppercase text-sm tracking-[0.13em] mb-2">
+          FAQ
+        </div>
 
-      <h2 className="text-fg text-3xl font-bold mb-6">Perguntas Frequentes</h2>
+        <h2 className="text-fg text-3xl font-bold mb-6">Perguntas Frequentes</h2>
 
-      <div className="bg-surface border border-surface-border rounded-lg overflow-hidden">
-        {faqs.map((faq, index) => (
-          <FAQItem
-            key={index}
-            question={faq.question}
-            answer={faq.answer}
-            defaultOpen={index === 1} // Second item is open by default
-          />
-        ))}
-      </div>
-    </section>
+        <div className="bg-surface border border-surface-border rounded-lg overflow-hidden">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              key={index}
+              question={faq.question}
+              answer={faq.answer}
+              defaultOpen={index === 1} // Second item is open by default
+            />
+          ))}
+        </div>
+      </section>
+      <h1>Ainda com dúvidas? Envie-nos um email!</h1>
+      <Button outlined={true} filled={false} variant="accent" className="text-[16px] px-4" onClick={() => router.push("/contact")}>
+          Contato
+      </Button>
+    </div>
   );
 }

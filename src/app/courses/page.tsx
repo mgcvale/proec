@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import Link from "next/link";
-import { CourseModule, type CourseData } from "@/types";
+import { CourseColor, CourseModule, type CourseData } from "@/types";
 
 const roboticsCourseData : CourseData[] = [
   {
@@ -212,16 +212,8 @@ export default function Courses() {
     
     return matchesSearch && matchesGrade;
   });
-
-  type Color =
-    | "indigo"
-    | "blue"
-    | "cyan"
-    | "teal"
-    | "green"
-    | "purple";
   
-  const getColorClass = (color: Color): string => {
+  const getColorClass = (color: CourseColor): string => {
     const colorMap = {
       indigo: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:bg-opacity-30 dark:text-indigo-300",
       blue: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:bg-opacity-30 dark:text-blue-300",
@@ -235,7 +227,7 @@ export default function Courses() {
 
   return (
     <main className="min-h-screen flex flex-col">
-      <Header />from
+      <Header />
       
       <section className="flex-1 container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">

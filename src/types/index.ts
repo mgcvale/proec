@@ -11,8 +11,16 @@ export interface CourseData {
   title: string;
   modules: CourseModule[];
   description: string;
-  color: string;
+  color: CourseColor;
 }
+
+export type CourseColor =
+  | "indigo"
+  | "blue"
+  | "cyan"
+  | "teal"
+  | "green"
+  | "purple";
 
 export interface FAQItem {
   question: string;

@@ -2,13 +2,13 @@ import { ReactNode } from "react";
 
 export default function Button({
     children,
-    onClick = () => {},
+    onClick = undefined,
     variant = "default", // "default" | "accent" | "background" | "border"
     outlined = false,
     filled = false,
     className = "",
   }: {
-    children: ReactNode,
+    children: ReactNode | string,
     onClick?: () => void,
     variant?: string,
     outlined?: boolean,
@@ -32,15 +32,15 @@ export default function Button({
   
     if (variant === "accent") {
       if (filled) {
-        classes += " bg-accent-2-500 text-on-fg hover:bg-accent-2-700";
+        classes += " bg-accent-1-500 text-on-fg hover:bg-accent-1-700";
       } else if (outlined) {
         classes +=
-          " border border-accent-2-500 text-accent-2-500 bg-bg hover:border-accent-2-700 hover:text-accent-2-700";
+          " border border-accent-1-500 bg-bg hover:border-accent-1-700 hover:text-accent-1-700";
       } else {
-        classes += " text-accent-2-500 hover:text-accent-2-700";
+        classes += " text-accent-1-500 hover:text-accent-1-700";
       }
     }
-  
+
     return (
       <button className={`${classes} ${className}`} onClick={onClick}>
         {children}
