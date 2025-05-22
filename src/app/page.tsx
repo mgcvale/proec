@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import CourseInfo from "@/components/CourseInfo";
-import { useTheme } from "./ThemeProvider";
+import { useTheme } from "../core/context/ThemeProvider";
 import AcquiredSkills from "@/components/AcquiredSkills";
 import FAQ from "@/components/FAQ";
 import { useRouter } from "next/navigation";

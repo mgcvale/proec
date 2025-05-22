@@ -27,8 +27,18 @@ export interface FAQItem {
   answer: string;
 }
 
-// Theme context types
 export interface ThemeContextType {
   theme: 'light' | 'dark';
   toggleTheme: () => void;
 }
+
+export type UserClass = "teacher" | "school";
+export interface User {
+  userToken: string;
+  userClass: UserClass;
+};
+
+export interface UserContextType {
+  user: User | null,
+  setUser: (u: User | null) => void;
+};

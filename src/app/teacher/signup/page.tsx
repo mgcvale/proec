@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ReactNode, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface TokenFormState {
   token: string;
@@ -204,12 +205,12 @@ export default function TeacherSignup(): ReactNode {
       <section className="flex-1 container mx-auto px-4 py-12">
         <div className="max-w-md mx-auto">
           <div className="mb-6">
-            <button
-              onClick={() => router.push("/signup")}
+            <Link
+              href="/signup"
               className="text-accent-1-500 hover:underline text-sm mb-4 flex items-center"
             >
               ← Voltar para seleção
-            </button>
+            </Link>
           </div>
           
           <h1 className="text-3xl font-bold mb-2 text-fg">Cadastrar Professor</h1>
@@ -260,10 +261,10 @@ export default function TeacherSignup(): ReactNode {
               
               <div className="mt-4 text-center text-sm">
                 <p className="text-fg-muted">
-                  Já tem uma conta? <button onClick={() => router.push("/teacher/login")} className="text-accent-1-500 hover:underline">Entrar como Professor</button>
+                  Já tem uma conta? <Link href="/teacher/login" className="text-accent-1-500 hover:underline">Entrar como Professor</Link>
                 </p>
                 <p className="text-fg-muted mt-2">
-                  É uma escola? <button onClick={() => router.push("/school/signup")} className="text-accent-1-500 hover:underline">Cadastrar Escola</button>
+                  É uma escola? <Link href="/school/signup" className="text-accent-1-500 hover:underline">Cadastrar Escola</Link>
                 </p>
               </div>
             </form>
@@ -391,7 +392,7 @@ export default function TeacherSignup(): ReactNode {
                     className="mt-1 w-4 h-4 text-accent-1-500 border-surface-border rounded focus:ring-accent-1-500"
                   />
                   <span className="text-sm text-fg-muted">
-                    Eu concordo com os <button onClick={() => router.push("/terms")} className="text-accent-1-500 hover:underline">Termos de Uso</button> e a <button onClick={() => router.push("/privacy")} className="text-accent-1-500 hover:underline">Política de Privacidade</button> *
+                    Eu concordo com os <Link href="/terms" className="text-accent-1-500 hover:underline">Termos de Uso</Link> e a <Link href="/privacy" className="text-accent-1-500 hover:underline">Política de Privacidade</Link> *
                   </span>
                 </label>
                 {formErrors.agreeTerms && (
@@ -408,7 +409,7 @@ export default function TeacherSignup(): ReactNode {
               
               <div className="mt-4 text-center text-sm">
                 <p className="text-fg-muted">
-                  Já tem uma conta? <button onClick={() => router.push("/teacher/login")} className="text-accent-1-500 hover:underline">Entrar como Professor</button>
+                  Já tem uma conta? <Link href="/teacher/login" className="text-accent-1-500 hover:underline">Entrar como Professor</Link>
                 </p>
               </div>
             </form>

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { useTheme } from "@/app/ThemeProvider";
+import { useTheme } from "@/core/context/ThemeProvider";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Button from "./Button";
+import { useUser } from '@/core/context/UserProvider';
 
 /**
  * Mobile header component with hamburger menu
@@ -11,6 +12,7 @@ import Button from "./Button";
 const MobileHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme } = useTheme();
+  const { user } = useUser();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -62,9 +64,9 @@ const MobileHeader = () => {
             </Link>
 
             <div className="py-3">
-              <Link href="/signup" className="block w-full">
+              <Link href={user === null ? "/signup" : user.userClass === 'teacher' ? "/teacher/dashboard" : "/school/dashboard"} className="block w-full">
                 <Button outlined={true} filled={true} variant={"background"} className="w-full py-3 px-4 font-medium text-lg justify-center">
-                  Minha Conta
+                  {user === null ? "Crie uma conta" : "Acesse sua Conta"}
                 </Button>
               </Link>
             </div>

@@ -1,4 +1,4 @@
-import { useTheme } from "@/app/ThemeProvider";
+import { useTheme } from "@/core/context/ThemeProvider";
 
 export default function ThemeSwitcher({ className = "" }) {
     const { theme, toggleTheme } = useTheme();

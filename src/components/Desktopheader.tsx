@@ -1,11 +1,13 @@
-import { useTheme } from "@/app/ThemeProvider"
+import { useTheme } from "@/core/context/ThemeProvider"
 import Button from "./Button";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Link from "next/link";
-import { ThemeContextType } from "@/types";
+import { ThemeContextType, UserContextType } from "@/types";
+import { useUser } from "@/core/context/UserProvider";
 
 export default function DesktopHeader() {
-    const { theme, toggleTheme }: ThemeContextType = useTheme();
+    const { theme }: ThemeContextType = useTheme();
+    const { user }: UserContextType = useUser();
     
     return (
         <header className="sticky top-0 left-0 w-full h-18
@@ -40,9 +42,9 @@ export default function DesktopHeader() {
 
                 <ThemeSwitcher className="mx-2" />
 
-                <Link href="/signup">
+                <Link href={user === null ? `/signup` : user.userClass === "teacher" ? '/teacher/dashboard' : '/school/dashboard' }>
                     <Button outlined={true} filled={true} variant={"background"} className="py-3 px-4 font-medium text-lg">
-                        Minha Conta
+                        {user === null ? "Crie uma conta" : "Acesse sua Conta"}
                     </Button>
                 </Link>
             </nav>

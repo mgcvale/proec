@@ -12,7 +12,6 @@ export function useTheme(): ThemeContextType {
   return context;
 }
 
-
 export default function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<'light' | 'dark' | null>(null);
 
