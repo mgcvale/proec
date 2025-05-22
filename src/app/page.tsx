@@ -5,9 +5,10 @@ import Button from "@/components/Button";
 import CourseInfo from "@/components/CourseInfo";
 import { useTheme } from "./ThemeProvider";
 import AcquiredSkills from "@/components/AcquiredSkills";
+import FAQ from "@/components/FAQ";
 
 export default function Home() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <main className="min-h-screen flex flex-col">
@@ -74,6 +75,7 @@ export default function Home() {
         {/* Course Info Section */}
         <CourseInfo />
         <AcquiredSkills />
+        <FAQ />
       </section>
       
       <Footer />

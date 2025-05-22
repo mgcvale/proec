@@ -3,8 +3,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import Link from "next/link";
+import { CourseModule, type CourseData } from "@/types";
 
-const roboticsCourseData = [
+const roboticsCourseData : CourseData[] = [
   {
     id: "1st-grade",
     grade: "1º Ano",
@@ -212,7 +213,15 @@ export default function Courses() {
     return matchesSearch && matchesGrade;
   });
 
-  const getColorClass = (color) => {
+  type Color =
+    | "indigo"
+    | "blue"
+    | "cyan"
+    | "teal"
+    | "green"
+    | "purple";
+  
+  const getColorClass = (color: Color): string => {
     const colorMap = {
       indigo: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:bg-opacity-30 dark:text-indigo-300",
       blue: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:bg-opacity-30 dark:text-blue-300",
@@ -226,7 +235,7 @@ export default function Courses() {
 
   return (
     <main className="min-h-screen flex flex-col">
-      <Header />
+      <Header />from
       
       <section className="flex-1 container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
@@ -288,7 +297,7 @@ export default function Courses() {
                   </div>
                   
                   <div className="grid md:grid-cols-3 gap-px bg-surface-border">
-                    {course.modules.map((module, index) => (
+                    {course.modules.map((module: CourseModule, index) => (
                       <div key={index} className="bg-surface p-6">
                         <div className="text-4xl mb-3">{module.icon}</div>
                         <h3 className="text-lg font-medium mb-3">{module.title}</h3>

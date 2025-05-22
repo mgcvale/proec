@@ -18,8 +18,8 @@ const onest = Onest({
 });
 
 export const metadata = {
-  title: "PROEC - Plataforma de Recursos e Orientação para Educação Continuada",
-  description: "Acesse cursos, workshops e recursos educacionais para desenvolvimento profissional e acadêmico contínuo.",
+  title: "PROEC",
+  description: "Cursos para a formação de educadores na área de robótica educacional",
 };
 
 export default function RootLayout({ children }) {

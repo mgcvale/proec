@@ -1,10 +1,10 @@
 'use client';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { ThemeContextType } from '@/types';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+export const ThemeContext = createContext<ThemeContextType | null>(null);
 
-export const ThemeContext = createContext(null);
-
-export function useTheme() {
+export function useTheme(): ThemeContextType {
   const context = useContext(ThemeContext);
   if (!context) {
     throw new Error('useTheme must be used within a ThemeProvider');
@@ -12,12 +12,13 @@ export function useTheme() {
   return context;
 }
 
-export default function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(null);
+
+export default function ThemeProvider({ children }: { children: ReactNode }) {
+  const [theme, setTheme] = useState<'light' | 'dark' | null>(null);
 
   useEffect(() => {
     try {
-      const storedTheme = localStorage.getItem('theme');
+      const storedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
       
       if (storedTheme) {
         setTheme(storedTheme);
@@ -52,8 +53,14 @@ export default function ThemeProvider({ children }) {
     localStorage.setItem('theme', newTheme);
   };
 
+  // Only provide context when theme is initialized
+  const contextValue: ThemeContextType = {
+    theme: theme || 'light', // Fallback to light if null
+    toggleTheme
+  };
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
   );

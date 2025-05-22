@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export default function Button({
     children,
     onClick = () => {},
@@ -5,6 +7,13 @@ export default function Button({
     outlined = false,
     filled = false,
     className = "",
+  }: {
+    children: ReactNode,
+    onClick?: () => void,
+    variant?: string,
+    outlined?: boolean,
+    filled?: boolean,
+    className?: string,
   }) {
     const base = "px-3 py-2 rounded-lg text-sm transition-colors duration-150 cursor-pointer";
     let classes = base;

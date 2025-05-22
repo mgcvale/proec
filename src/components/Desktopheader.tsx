@@ -2,9 +2,10 @@ import { useTheme } from "@/app/ThemeProvider"
 import Button from "./Button";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Link from "next/link";
+import { ThemeContextType } from "@/types";
 
 export default function DesktopHeader() {
-    const { theme } = useTheme();
+    const { theme, toggleTheme }: ThemeContextType = useTheme();
     
     return (
         <header className="sticky top-0 left-0 w-full h-18

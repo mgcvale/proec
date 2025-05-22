@@ -13,16 +13,16 @@ export default function AcquiredSkills() {
         </h2>
 
         <ul className="*:flex *:items-center *:justify-start *:gap-2 flex flex-col justify-start items-start gap-2">
-            <li class="flex justify-start items-center gap-2">
-                <span class="text-accent-1-500"><CheckCheck /></span>
+            <li className="flex justify-start items-center gap-2">
+                <span className="text-accent-1-500"><CheckCheck /></span>
                 Robótica Educacional
             </li>
             <li>
-                <span class="text-accent-1-500"><CheckCheck /></span>
+                <span className="text-accent-1-500"><CheckCheck /></span>
                 Hardware Básico
             </li>
             <li>
-                <span class="text-accent-1-500"><CheckCheck /></span>
+                <span className="text-accent-1-500"><CheckCheck /></span>
                <span> Noções Básicas de Lógica de Programação </span>
             </li>
         </ul>
