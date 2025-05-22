@@ -1,105 +1,20 @@
 "use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useState } from "react";
+import { School, Users, ArrowRight } from "lucide-react";
+import { ReactNode } from "react";
+import { useRouter } from "next/navigation";
 
-export default function Signup() {
-  const [formState, setFormState] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    agreeTerms: false
-  });
+export default function SignupSelection(): ReactNode {
   
-  const [formStatus, setFormStatus] = useState(null);
-  const [formErrors, setFormErrors] = useState({});
-  
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormState(prev => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value
-    }));
-    
-    // Clear error when field is modified
-    if (formErrors[name]) {
-      setFormErrors(prev => ({
-        ...prev,
-        [name]: null
-      }));
-    }
+  const router = useRouter();
+
+  const handleSchoolSignup = (): void => {
+    router.push("/school/signup");
   };
-  
-  const validateForm = () => {
-    const errors = {};
-    
-    if (!formState.firstName.trim()) {
-      errors.firstName = "Nome é obrigatório";
-    }
-    
-    if (!formState.lastName.trim()) {
-      errors.lastName = "Sobrenome é obrigatório";
-    }
-    
-    if (!formState.email.trim()) {
-      errors.email = "E-mail é obrigatório";
-    } else {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formState.email)) {
-        errors.email = "E-mail inválido";
-      }
-    }
-    
-    if (!formState.password) {
-      errors.password = "Senha é obrigatória";
-    } else if (formState.password.length < 8) {
-      errors.password = "A senha deve ter pelo menos 8 caracteres";
-    }
-    
-    if (formState.password !== formState.confirmPassword) {
-      errors.confirmPassword = "As senhas não coincidem";
-    }
-    
-    if (!formState.agreeTerms) {
-      errors.agreeTerms = "Você deve concordar com os termos";
-    }
-    
-    return errors;
-  };
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    const errors = validateForm();
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
-    
-    // Simulate account creation
-    setTimeout(() => {
-      setFormStatus({
-        type: "success",
-        message: "Conta criada com sucesso! Redirecionando para a página de login..."
-      });
-      
-      // Reset form
-      setFormState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        agreeTerms: false
-      });
-      
-      // Simulate redirect
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 2000);
-    }, 1000);
+
+  const handleTeacherSignup = (): void => {
+    router.push("/teacher/signup")
   };
 
   return (
@@ -107,145 +22,114 @@ export default function Signup() {
       <Header />
       
       <section className="flex-1 container mx-auto px-4 py-12">
-        <div className="max-w-md mx-auto">
-          <h1 className="text-3xl font-bold mb-2 text-fg">Criar Conta</h1>
-          <p className="text-fg-muted mb-8">
-            Junte-se à PROEC e comece sua jornada de aprendizado hoje mesmo.
+        <div className="max-w-2xl mx-auto text-center">
+          <h1 className="text-3xl font-bold mb-2 text-fg">Criar Conta no PROEC</h1>
+          <p className="text-fg-muted mb-12">
+            Escolha o tipo de conta que deseja criar para começar sua jornada de robótica educacional.
           </p>
           
-          {formStatus && (
-            <div className={`p-4 mb-6 rounded-lg ${formStatus.type === "success" ? "bg-green-100 text-green-800 dark:bg-green-800/20 dark:text-green-400" : "bg-red-100 text-red-800 dark:bg-red-800/20 dark:text-red-400"}`}>
-              {formStatus.message}
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* School Card */}
+            <div className="bg-surface border border-surface-border rounded-lg p-8 hover:border-accent-1-500 transition-colors cursor-pointer group"
+                 onClick={handleSchoolSignup}>
+              <div className="flex flex-col items-center text-center h-full">
+                <div className="w-16 h-16 bg-accent-1-100 dark:bg-accent-1-900/30 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-1-200 dark:group-hover:bg-accent-1-900/50 transition-colors">
+                  <School className="w-8 h-8 text-accent-1-600 dark:text-accent-1-400" />
+                </div>
+                
+                <h2 className="text-xl font-semibold mb-3 text-fg">Sou uma Escola</h2>
+                
+                <p className="text-fg-muted mb-6 leading-relaxed">
+                  Registre sua instituição de ensino, gerencie professores e organize os cursos disponibilizados pela plataforma.
+                </p>
+                
+                <ul className="text-sm text-fg-muted mb-6 space-y-2 text-left w-full">
+                  <li className="flex items-center">
+                    <div className="w-1.5 h-1.5 bg-accent-1-500 rounded-full mr-2"></div>
+                    Gerenciar professores
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-1.5 h-1.5 bg-accent-1-500 rounded-full mr-2"></div>
+                    Organizar cursos de robótica
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-1.5 h-1.5 bg-accent-1-500 rounded-full mr-2"></div>
+                    Acompanhar relatórios e métricas
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-1.5 h-1.5 bg-accent-1-500 rounded-full mr-2"></div>
+                    Gerar tokens para professores
+                  </li>
+                </ul>
+                <div className="spacer grow max-h-full"></div>
+                
+                <button 
+                  className="w-full px-6 py-3 bg-accent-1-500 text-white rounded-lg hover:bg-accent-1-700 transition-colors flex items-center justify-center group-hover:bg-accent-1-600"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleSchoolSignup();
+                  }}
+                >
+                  Cadastrar Escola
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </button>
+              </div>
             </div>
-          )}
+            
+            {/* Teacher Card */}
+            <div className="bg-surface border border-surface-border rounded-lg p-8 hover:border-accent-1-500 transition-colors cursor-pointer group"
+                 onClick={handleTeacherSignup}>
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 bg-accent-1-100 dark:bg-accent-1-900/30 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-1-200 dark:group-hover:bg-accent-1-900/50 transition-colors">
+                  <Users className="w-8 h-8 text-accent-1-600 dark:text-accent-1-400" />
+                </div>
+                
+                <h2 className="text-xl font-semibold mb-3 text-fg">Sou um Professor</h2>
+                
+                <p className="text-fg-muted mb-6 leading-relaxed">
+                  Junte-se à sua escola para acessar os cursos oferecidos, gerenciar turmas e acompanhar o progresso de seus alunos.
+                </p>
+                
+                <ul className="text-sm text-fg-muted mb-6 space-y-2 text-left w-full">
+                  <li className="flex items-center">
+                    <div className="w-1.5 h-1.5 bg-accent-1-500 rounded-full mr-2"></div>
+                    Acessar cursos e materiais
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-1.5 h-1.5 bg-accent-1-500 rounded-full mr-2"></div>
+                    Gerenciar turmas e alunos
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-1.5 h-1.5 bg-accent-1-500 rounded-full mr-2"></div>
+                    Acompanhar progresso individual
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-1.5 h-1.5 bg-accent-1-500 rounded-full mr-2"></div>
+                    Colaborar com outros professores (?)
+                  </li>
+                </ul>
+
+                <div className="spacer grow max-h-full"></div>
+                
+                <button 
+                  className="w-full px-6 py-3 bg-accent-1-500 text-white rounded-lg hover:bg-accent-1-700 transition-colors flex items-center justify-center group-hover:bg-accent-1-600"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleTeacherSignup();
+                  }}
+                >
+                  Cadastrar Professor
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </button>
+              </div>
+            </div>
+          </div>
           
-          <form onSubmit={handleSubmit} className="bg-surface border border-surface-border rounded-lg p-6">
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              <div>
-                <label htmlFor="firstName" className="block mb-1 text-sm font-medium">
-                  Nome *
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={formState.firstName}
-                  onChange={handleChange}
-                  className={`w-full p-3 bg-bg border ${formErrors.firstName ? "border-red-500" : "border-surface-border"} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-1-500`}
-                />
-                {formErrors.firstName && (
-                  <p className="mt-1 text-sm text-red-500">{formErrors.firstName}</p>
-                )}
-              </div>
-              
-              <div>
-                <label htmlFor="lastName" className="block mb-1 text-sm font-medium">
-                  Sobrenome *
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={formState.lastName}
-                  onChange={handleChange}
-                  className={`w-full p-3 bg-bg border ${formErrors.lastName ? "border-red-500" : "border-surface-border"} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-1-500`}
-                />
-                {formErrors.lastName && (
-                  <p className="mt-1 text-sm text-red-500">{formErrors.lastName}</p>
-                )}
-              </div>
-            </div>
-            
-            <div className="mb-4">
-              <label htmlFor="email" className="block mb-1 text-sm font-medium">
-                E-mail *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formState.email}
-                onChange={handleChange}
-                className={`w-full p-3 bg-bg border ${formErrors.email ? "border-red-500" : "border-surface-border"} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-1-500`}
-              />
-              {formErrors.email && (
-                <p className="mt-1 text-sm text-red-500">{formErrors.email}</p>
-              )}
-            </div>
-            
-            <div className="mb-4">
-              <label htmlFor="password" className="block mb-1 text-sm font-medium">
-                Senha *
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formState.password}
-                onChange={handleChange}
-                className={`w-full p-3 bg-bg border ${formErrors.password ? "border-red-500" : "border-surface-border"} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-1-500`}
-              />
-              {formErrors.password && (
-                <p className="mt-1 text-sm text-red-500">{formErrors.password}</p>
-              )}
-              <p className="mt-1 text-sm text-fg-muted">
-                A senha deve ter pelo menos 8 caracteres
-              </p>
-            </div>
-            
-            <div className="mb-6">
-              <label htmlFor="confirmPassword" className="block mb-1 text-sm font-medium">
-                Confirmar Senha *
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                value={formState.confirmPassword}
-                onChange={handleChange}
-                className={`w-full p-3 bg-bg border ${formErrors.confirmPassword ? "border-red-500" : "border-surface-border"} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-1-500`}
-              />
-              {formErrors.confirmPassword && (
-                <p className="mt-1 text-sm text-red-500">{formErrors.confirmPassword}</p>
-              )}
-            </div>
-            
-            <div className="mb-6">
-              <div className="flex items-start">
-                <div className="flex items-center h-5">
-                  <input
-                    id="agreeTerms"
-                    name="agreeTerms"
-                    type="checkbox"
-                    checked={formState.agreeTerms}
-                    onChange={handleChange}
-                    className="w-4 h-4 border border-surface-border rounded bg-bg focus:ring-2 focus:ring-accent-1-500"
-                  />
-                </div>
-                <div className="ml-3 text-sm">
-                  <label htmlFor="agreeTerms" className="font-medium text-fg">
-                    Concordo com os <a href="/terms" className="text-accent-1-500 hover:underline">Termos de Serviço</a> e <a href="/privacy" className="text-accent-1-500 hover:underline">Política de Privacidade</a> *
-                  </label>
-                  {formErrors.agreeTerms && (
-                    <p className="mt-1 text-sm text-red-500">{formErrors.agreeTerms}</p>
-                  )}
-                </div>
-              </div>
-            </div>
-            
-            <button
-              type="submit"
-              className="w-full px-6 py-3 bg-accent-1-500 text-white rounded-lg hover:bg-accent-1-700 transition-colors"
-            >
-              Criar Conta
-            </button>
-            
-            <div className="mt-4 text-center text-sm">
-              <p className="text-fg-muted">
-                Já tem uma conta? <a href="/login" className="text-accent-1-500 hover:underline">Entrar</a>
-              </p>
-            </div>
-          </form>
+          <div className="mt-8 text-center text-md">
+            <p className="text-fg-muted">
+              Já tem uma conta? <a href="/login" className="text-accent-1-500 hover:underline">Entrar</a>
+            </p>
+          </div>
         </div>
       </section>
       

@@ -6,9 +6,11 @@ import CourseInfo from "@/components/CourseInfo";
 import { useTheme } from "./ThemeProvider";
 import AcquiredSkills from "@/components/AcquiredSkills";
 import FAQ from "@/components/FAQ";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { theme } = useTheme();
+  const router = useRouter();
 
   return (
     <main className="min-h-screen flex flex-col">
@@ -39,7 +41,7 @@ export default function Home() {
           <h3 className="text-2xl mb-8 text-fg-muted text-center">
             Inscreva-se através de sua instituição de ensino e começe já!
           </h3>
-          <Button filled={false} outlined={true} variant={"border"} className="w-4/5 sm:w-3/5 lg:w-fit lg:px-6 bg-transparent px-4 backdrop-blur-xs text-[1.1rem]">
+          <Button filled={false} outlined={true} variant={"border"} className="w-4/5 sm:w-3/5 lg:w-fit lg:px-6 bg-transparent px-4 backdrop-blur-xs text-[1.1rem]" onClick={() => router.push("/signup")}>
             Inscrever-se
           </Button>
         </div>
