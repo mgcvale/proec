@@ -8,7 +8,7 @@ import React from 'react';
 const CourseInfo = () => {
   return (
     <section className="w-full max-w-4xl mx-auto mt-16 mb-16">
-      <div className="text-fg-muted uppercase text-sm tracking-wider mb-2">
+      <div className="text-fg-muted uppercase text-sm tracking-[0.135em] mb-2">
         INFORMAÇÕES DO CURSO
       </div>
       

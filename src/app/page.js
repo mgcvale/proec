@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import CourseInfo from "@/components/CourseInfo";
 import { useTheme } from "./ThemeProvider";
+import AcquiredSkills from "@/components/AcquiredSkills";
 
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
@@ -72,6 +73,7 @@ export default function Home() {
         
         {/* Course Info Section */}
         <CourseInfo />
+        <AcquiredSkills />
       </section>
       
       <Footer />

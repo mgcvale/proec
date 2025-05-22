@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import { useState } from "react";
 import Link from "next/link";
 
-// Robotics course modules data structured by grade
 const roboticsCourseData = [
   {
     id: "1st-grade",
@@ -140,7 +139,58 @@ const roboticsCourseData = [
     ],
     description: "Culminação do aprendizado em robótica do ensino fundamental I com projetos mais complexos e integração com outras disciplinas.",
     color: "green"
-  }
+  },
+  {
+    id: "teacher-training",
+    grade: "Formação de Professores",
+    title: "Capacitação em Robótica Educacional",
+    modules: [
+      {
+        title: "Fundamentos da Robótica Educacional",
+        skills: [
+          "Compreensão dos objetivos pedagógicos da robótica",
+          "Familiarização com kits e ferramentas disponíveis",
+          "Planejamento de aulas interdisciplinares"
+        ],
+        activities: [
+          "Workshops com uso de kits reais",
+          "Estudos de caso de aulas de robótica",
+          "Elaboração de planos de aula"
+        ],
+        icon: "🎓"
+      },
+      {
+        title: "Metodologias de Ensino",
+        skills: [
+          "Aprendizagem baseada em projetos",
+          "Uso de jogos e dinâmicas em sala",
+          "Avaliação de competências"
+        ],
+        activities: [
+          "Simulações de aula",
+          "Criação de atividades lúdicas",
+          "Discussão sobre práticas avaliativas"
+        ],
+        icon: "📘"
+      },
+      {
+        title: "Suporte e Adaptação",
+        skills: [
+          "Adaptação para diferentes faixas etárias",
+          "Inclusão de alunos com necessidades especiais",
+          "Gestão de tempo e recursos"
+        ],
+        activities: [
+          "Dinâmicas de grupo sobre inclusão",
+          "Estudos de caso",
+          "Criação de cronogramas realistas"
+        ],
+        icon: "🛠️"
+      }
+    ],
+    description: "Curso principal voltado para capacitação de professores, com foco em metodologias ativas, uso de tecnologia em sala de aula e planejamento pedagógico da robótica educacional.",
+    color: "purple"
+  },
 ];
 
 export default function Courses() {
@@ -162,14 +212,14 @@ export default function Courses() {
     return matchesSearch && matchesGrade;
   });
 
-  // Color utility function
   const getColorClass = (color) => {
     const colorMap = {
       indigo: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:bg-opacity-30 dark:text-indigo-300",
       blue: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:bg-opacity-30 dark:text-blue-300",
       cyan: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:bg-opacity-30 dark:text-cyan-300",
       teal: "bg-teal-100 text-teal-800 dark:bg-teal-900 dark:bg-opacity-30 dark:text-teal-300",
-      green: "bg-green-100 text-green-800 dark:bg-green-900 dark:bg-opacity-30 dark:text-green-300"
+      green: "bg-green-100 text-green-800 dark:bg-green-900 dark:bg-opacity-30 dark:text-green-300",
+      purple: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:bg-opacity-30 dark:text-purple-300"
     };
     return colorMap[color] || "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
   };

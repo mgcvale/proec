@@ -54,7 +54,7 @@ const MobileHeader = () => {
             </Link>
 
             <Link href="/courses" className="py-3 border-b border-surface-border">
-              <span className="block w-full text-text hover:text-primary">Explorar curso</span>
+              <span className="block w-full text-text hover:text-primary">Explorar cursos</span>
             </Link>
 
             <Link href="/about" className="py-3 border-b border-surface-border">
