@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import { FormEvent, ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useUser } from "@/core/context/UserProvider";
+import { TeacherUser } from "@/types";
 
 type FormState = {
   email: string;
@@ -19,6 +21,7 @@ type FormStatus = {
 
 export default function UserLogin() {
     const router = useRouter();
+    const { user, setUser } = useUser();
 
   const [formState, setFormState] = useState<FormState>({
     email: "",
@@ -82,8 +85,17 @@ export default function UserLogin() {
         password: "",
       });
 
+      setUser({
+        userToken: "alksjd",
+        userClass: "teacher",
+        userData: {
+          username: "Professor teste",
+          email: "professor@gmail.com",
+        } as TeacherUser
+      });
+
       setTimeout(() => {
-        router.push("/school/dashboard");
+        router.push("/teacher/dashboard");
       }, 1000);
     }, 1000);
   };
@@ -96,7 +108,7 @@ export default function UserLogin() {
         <div className="max-w-md mx-auto">
         <div className="mb-6">
             <Link
-              href="/signup"
+              href="/login"
               className="text-accent-1-500 hover:underline text-sm mb-4 flex items-center"
             >
               ← Voltar para seleção

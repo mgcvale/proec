@@ -33,9 +33,36 @@ export interface ThemeContextType {
 }
 
 export type UserClass = "teacher" | "school";
+
+export interface SchoolUser {
+  schoolName: string;
+  email: string;
+};
+export function isSchooluser(obj: any): obj is SchoolUser {
+  return (
+    typeof(obj) === 'object' &&
+    'email' in obj &&
+    'schoolName' in obj
+  );
+}
+
+export interface TeacherUser {
+  username: string;
+  email: string;
+};
+export function isTeacherUser(obj: any): obj is TeacherUser {
+  return (
+    typeof(obj) === 'object' &&
+    'email' in obj &&
+    'username' in obj
+  );
+}
+
+
 export interface User {
   userToken: string;
   userClass: UserClass;
+  userData: SchoolUser | TeacherUser;
 };
 
 export interface UserContextType {

@@ -3,7 +3,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { FormEvent, ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { SchoolUser } from "@/types/index";
 import Link from "next/link";
+import { useUser } from "@/core/context/UserProvider";
 
 type FormState = {
   email: string;
@@ -19,6 +21,7 @@ type FormStatus = {
 
 export default function SchoolLogin() {
     const router = useRouter();
+    const { user, setUser } = useUser();
 
   const [formState, setFormState] = useState<FormState>({
     email: "",
@@ -82,8 +85,17 @@ export default function SchoolLogin() {
         password: "",
       });
 
+      setUser({
+        userToken: "alksjd",
+        userClass: "school",
+        userData: {
+          schoolName: "Escola São João",
+          email: "admin@saojoao.com"
+        } as SchoolUser
+      });
+
       setTimeout(() => {
-        router.push("/teacher/dashboard");
+        router.push("/school/dashboard");
       }, 1000);
     }, 1000);
   };
@@ -96,7 +108,7 @@ export default function SchoolLogin() {
         <div className="max-w-md mx-auto">
         <div className="mb-6">
             <Link
-              href="/signup"
+              href="/login"
               className="text-accent-1-500 hover:underline text-sm mb-4 flex items-center"
             >
               ← Voltar para seleção
