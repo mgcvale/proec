@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import DesktopHeader from "./Desktopheader";
 import MobileHeader from "./MobileHeader";
-import ReducedHeader from "./ReducedHeader";
+import ReducedHeader from "./DashboardHeader";
 
 export default function Header({ reducedHeader = false }: { reducedHeader?: boolean }) {
     const [isMobile, setIsMobile] = useState(false);

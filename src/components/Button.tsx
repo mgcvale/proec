@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { MouseEvent, ReactNode } from "react";
 
 export default function Button({
     children,
@@ -9,7 +9,7 @@ export default function Button({
     className = "",
   }: {
     children: ReactNode | string,
-    onClick?: () => void,
+    onClick?: (e: MouseEvent<HTMLButtonElement>) => void,
     variant?: string,
     outlined?: boolean,
     filled?: boolean,

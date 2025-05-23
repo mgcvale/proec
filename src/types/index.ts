@@ -69,3 +69,16 @@ export interface UserContextType {
   user: User | null,
   setUser: (u: User | null) => void;
 };
+
+
+export interface ContextMenuItem {
+  label: string;
+  onClick: () => void;
+}
+
+export interface ContextMenuProps {
+  items: ContextMenuItem[];
+  position: { x: number; y: number };
+  onClose: () => void;
+  inverted?: boolean;
+}

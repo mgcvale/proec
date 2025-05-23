@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={`${geistSans.variable} ${geistMono.variable}, ${onest.variable} font-onest antialiased`}>
         <ThemeProvider>
           <UserProvider>
-            {children}
+              {children}
           </UserProvider>
         </ThemeProvider>
       </body>

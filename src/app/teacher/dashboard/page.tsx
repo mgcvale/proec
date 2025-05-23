@@ -24,7 +24,7 @@ export default function Dashboard() {
         <main className="min-h-screen flex flex-col relative">
             <Header reducedHeader={true} />
             <section className="flex-1 p-4">
-                <h1 className="text-4xl font-bold mb-6 text-fg">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 text-fg">
                     Bem-vindo, {user.userData.username}
                 </h1>
             </section>
