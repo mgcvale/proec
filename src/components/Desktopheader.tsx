@@ -19,7 +19,7 @@ export default function DesktopHeader() {
                 <Link href="/">
                     <img className="h-9 w-auto" src={theme == 'dark' ? "/unicamp-dark.png" : "/unicamp-light.png"} alt="Logo unicamp"></img>
                 </Link>
-                <Link href="/" className="text-lg font-medium">PROEC</Link>
+                <Link href="/" className="text-lg font-medium">PROEEC</Link>
             </div>
             <nav className="flex justify-end items-center gap-2">
                 <Link href="/">
