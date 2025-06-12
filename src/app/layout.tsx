@@ -20,7 +20,7 @@ const onest = Onest({
 });
 
 export const metadata = {
-  title: "PROEC",
+  title: "PROEEC",
   description: "Cursos para a formação de educadores na área de robótica educacional",
 };
 

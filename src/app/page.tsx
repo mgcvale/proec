@@ -33,7 +33,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto flex items-center justify-start flex-col gap-2 mb-28 md:mb-16">
           <div className="badge text-center border-1 rounded-full border-surface-border w-fit flex justify-start items-center py-1 px-3 text-fg-muted backdrop-blur-xs tracking-wider gap-2 mb-8">
             <img className="h-4 w-auto" src={theme == 'dark' ? "/unicamp-dark.png" : "/unicamp-light.png"} alt="Logo unicamp"></img>
-            PROEC
+            PROEEC
           </div>
           <h1 className="lg:text-6xl text-center md:text-5xl text-3xl font-semibold mb-6 text-fg">
             Conheça seu novo curso gratuito de robótica

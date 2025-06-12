@@ -9,7 +9,7 @@ export default function About() {
       
       <section className="flex-1 container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold mb-6 text-fg">Sobre o PROEC</h1>
+          <h1 className="text-4xl font-bold mb-6 text-fg">Sobre o PROEEC</h1>
           <div className="prose prose-lg dark:prose-invert">
           </div>
         </div>

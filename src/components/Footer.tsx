@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <p className="text-fg-muted">&copy; 2025 PROEC. Todos os direitos reservados.</p>
+            <p className="text-fg-muted">&copy; 2025 PROEEC. Todos os direitos reservados.</p>
           </div>
           <div className="flex gap-4">
             <a href="/about" className="text-fg-muted hover:text-fg">Sobre</a>
