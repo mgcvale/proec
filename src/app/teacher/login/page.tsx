@@ -96,8 +96,8 @@ export default function UserLogin() {
 
       setTimeout(() => {
         router.push("/teacher/dashboard");
-      }, 1000);
-    }, 1000);
+      }, 500);
+    }, 500);
   };
 
   return (

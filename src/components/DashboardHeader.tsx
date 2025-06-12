@@ -34,7 +34,7 @@ export default function DashboardHeader() {
         } else {
             document.removeEventListener('mousedown', handleClickOutside);
         }
-
+ 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
@@ -77,7 +77,6 @@ export default function DashboardHeader() {
                 {user && (
                     <div className="relative">
                         <Button 
-                            ref={buttonRef}
                             filled={true} 
                             outlined={false} 
                             variant={"background"} 
