@@ -144,8 +144,8 @@ export default function TeacherSignup(): ReactNode {
     setTimeout(() => {
       // Mock school data based on token
       const mockSchoolData: SchoolInfo = {
-        name: "Colégio São José",
-        location: "São Paulo, SP"
+        name: "EMEI Hilda Maria C. Hafliger",
+        location: "Limeira, SP"
       };
       
       setSchoolInfo(mockSchoolData);

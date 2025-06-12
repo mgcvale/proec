@@ -167,7 +167,7 @@ export default function SchoolSignup(): ReactNode {
                 name="schoolName"
                 value={formState.schoolName}
                 onChange={handleChange}
-                placeholder="Ex: Colégio São José"
+                placeholder="Ex: EMEI Hilda Maria C. Hafliger"
                 className={`w-full p-3 bg-bg border ${formErrors.schoolName ? "border-red-500" : "border-surface-border"} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-1-500`}
               />
               {formErrors.schoolName && (
@@ -185,7 +185,7 @@ export default function SchoolSignup(): ReactNode {
                 name="location"
                 value={formState.location}
                 onChange={handleChange}
-                placeholder="Ex: São Paulo, SP"
+                placeholder="Ex: Limeira, SP"
                 className={`w-full p-3 bg-bg border ${formErrors.location ? "border-red-500" : "border-surface-border"} rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-1-500`}
               />
               {formErrors.location && (
